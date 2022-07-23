@@ -1,3 +1,5 @@
+<!-- eslint-disable prettier/prettier -->
+<!-- eslint-disable prettier/prettier -->
 <template>
 <h1>Create an event</h1>
 
@@ -61,6 +63,9 @@
 </template>
 
 <script>
+
+import {v4 as uuidv4} from 'uuid';
+
 export default {
   data () {
     return {
@@ -87,7 +92,9 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("Event:", this.event)
+      this.event.id = uuidv4();
+      this.event.organizer = this.$store.state.user;
+      console.log("Event:",  this.event)
     }
   }
 }
